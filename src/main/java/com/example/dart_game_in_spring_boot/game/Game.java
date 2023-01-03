@@ -1,13 +1,10 @@
-package com.example.dart_game_in_spring_boot.player;
+package com.example.dart_game_in_spring_boot.game;
 
-
-import com.example.dart_game_in_spring_boot.game.Game;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.dart_game_in_spring_boot.player.Player;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -16,19 +13,18 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-public class Player {
-
+public class Game {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
     private String name;
+    private Integer finalPoint;
     @ElementCollection
-    private List<Integer> points;
+    private List<String> position;
 
-    @JsonIgnore
-    @ManyToOne
-    private Game game;
+    @OneToMany(mappedBy = "game")
+    private List<Player> players;
 
 }

@@ -12,9 +12,9 @@ public class PlayerController {
 
     private final PlayerService playerService;
 
-    @PostMapping(value = "/add/player")
-    public void addPlayer(@RequestBody Player player) {
-        playerService.addPlayer(player);
+    @PostMapping(value = "/add/player/game/{gameId}")
+    public void addPlayer(@RequestBody Player player, @PathVariable String gameId) {
+        playerService.addPlayer(player,gameId);
     }
 
     @GetMapping(value = "/all/players")
@@ -25,6 +25,11 @@ public class PlayerController {
     @GetMapping(value = "/all/players/{id}")
     public Player getPlayer(@PathVariable String id) {
         return playerService.getPlayer(id);
+    }
+
+    @PutMapping(value = "/player/{id}")
+    public Player getPlayerWithPoint(@PathVariable String id, @RequestParam Integer point) {
+        return playerService.getPlayerWithPoint(id, point);
     }
 
 
