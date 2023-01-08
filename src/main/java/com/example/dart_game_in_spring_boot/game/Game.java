@@ -21,8 +21,6 @@ public class Game {
     private String id;
     private String name;
     private Integer finalPoint;
-    @ElementCollection
-    private List<String> position;
 
     @OneToMany(mappedBy = "game")
     private List<Player> players;

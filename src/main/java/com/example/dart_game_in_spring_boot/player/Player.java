@@ -20,8 +20,6 @@ public class Player {
 
 
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
     private String name;
     @ElementCollection
